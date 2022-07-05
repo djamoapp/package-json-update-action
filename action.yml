@@ -1,0 +1,12 @@
+name: 'Package.json Update Action'
+description: 'Update package.json file after any tag created'
+inputs:
+  tag:
+    description: 'Tag value'
+    required: true
+  branch:
+    description: 'The branch name'
+    required: true
+runs:
+  using: 'node16'
+  main: 'dist/index.js'

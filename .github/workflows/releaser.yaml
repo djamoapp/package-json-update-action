@@ -1,0 +1,25 @@
+name: 'PACKAGE VERSION'
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  annotate-pr:
+    runs-on: ubuntu-latest
+    name: Update package.json file version
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+
+      - name: Retrieve tag
+        id: get_version
+        run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
+
+      - name: Update package.json version
+        uses: djamoapp/package-json-update-action@main
+        with:
+          tag: ${{ steps.get_version.outputs.VERSION }}
+          branch: 'main'
+          token: ${{ secrets.GITHUB_TOKEN }}
