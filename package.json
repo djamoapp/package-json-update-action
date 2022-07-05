@@ -1,6 +1,6 @@
 {
   "name": "package-json-update-action",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Github action to update package.json file",
   "main": "index.js",
   "scripts": {
